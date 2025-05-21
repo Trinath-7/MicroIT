@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aerula Trinath Krishna Reddy | Portfolio</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --secondary: #1e40af;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --accent: #3b82f6;
+      --text: #334155;
+      --gray-light: #f1f5f9;
+      --gray: #e2e8f0;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+      color: var(--text);
+      background-color: var(--light);
+      line-height: 1.7;
+    }
+    
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      margin-bottom: 1rem;
+      color: var(--dark);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+    }
+    
+    h2 {
+      font-size: 2rem;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      width: 60%;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+      bottom: -10px;
+      left: 0;
+    }
+    
+    h3 {
+      font-size: 1.5rem;
+    }
+    
+    p {
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Header & Navigation */
+    .header {
+      background-color: var(--dark);
+      color: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 0;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+    }
+    
+    .logo span {
+      color: var(--accent);
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-links li {
+      margin-left: 1.5rem;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      padding: 0.5rem 0;
+      position: relative;
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 1px;
+      bottom: 0;
+      left: 0;
+      transition: width 0.3s;
+    }
+    
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(to right, rgba(30, 41, 59, 0.9), rgba(30, 41, 59, 0.7)), url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      position: relative;
+    }
+    
+    .hero-content {
+      max-width: 700px;
+    }
+    
+    .hero h1 {
+      color: white;
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    
+    .hero-btn {
+      display: inline-block;
+      background-color: var(--primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    
+    .hero-btn:hover {
+      background-color: var(--secondary);
+    }
+    
+    /* Sections */
+    .section {
+      padding: 5rem 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title h2 {
+      display: inline-block;
+    }
+    
+    .section-title h2::after {
+      left: 20%;
+      width: 60%;
+    }
+    
+    /* About */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    .about-img {
+      position: relative;
+    }
+    
+    .about-img img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .about-img::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 4px solid var(--accent);
+      border-radius: 8px;
+      top: 20px;
+      left: 20px;
+      z-index: -1;
+    }
+    
+    .about-text h3 {
+      margin-bottom: 1.5rem;
+    }
+    
+    .about-info {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .info-item {
+      display: flex;
+      align-items: center;
+    }
+    
+    .info-item strong {
+      margin-right: 0.5rem;
+      color: var(--dark);
+    }
+    
+    /* Skills */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    
+    .skill-card {
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .skill-card-header {
+      background-color: var(--accent);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    
+    .skill-card-body {
+      padding: 1.5rem;
+    }
+    
+    .skill-progress {
+      height: 8px;
+      background-color: var(--gray);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    
+    .skill-progress-bar {
+      height: 100%;
+      background-color: var(--accent);
+      border-radius: 4px;
+    }
+    
+    /* Portfolio */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .portfolio-item {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      background-color: white;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .portfolio-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .portfolio-img {
+      height: 200px;
+      background-color: var(--gray-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .portfolio-content {
+      padding: 1.5rem;
+    }
+    
+    .portfolio-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .portfolio-tags {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
+    
+    .portfolio-tag {
+      background-color: var(--gray-light);
+      color: var(--text);
+      font-size: 0.8rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Resume */
+    .resume-tabs {
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: center;
+      border-bottom: 1px solid var(--gray);
+    }
+    
+    .resume-tab {
+      padding: 1rem 2rem;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.3s;
+      font-weight: 600;
+    }
+    
+    .resume-tab.active {
+      color: var(--primary);
+    }
+    
+    .resume-tab.active::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background: var(--accent);
+      bottom: -1px;
+      left: 0;
+    }
+    
+    .resume-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .resume-items {
+      display: none;
+    }
+    
+    .resume-items.active {
+      display: block;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    
+    .resume-item {
+      position: relative;
+      padding-left: 2rem;
+      padding-bottom: 3rem;
+      border-left: 2px solid var(--gray);
+    }
+    
+    .resume-item::before {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: white;
+      border: 2px solid var(--accent);
+      left: -9px;
+      top: 0;
+    }
+    
+    .resume-item:last-child {
+      padding-bottom: 0;
+    }
+    
+    .resume-date {
+      background-color: var(--accent);
+      color: white;
+      font-size: 0.8rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .resume-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .resume-place {
+      font-style: italic;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    
+    /* Contact */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+    }
+    
+    .contact-info {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .contact-item {
+      display: flex;
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background-color: var(--accent);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+    
+    .contact-form {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--gray);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .btn {
+      display: inline-block;
+      background-color: var(--primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .btn:hover {
+      background-color: var(--secondary);
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 0.5rem;
+      color: white;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    
+    .social-link:hover {
+      background-color: var(--accent);
+    }
+    
+    .footer-text {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      .about-content,
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .about-img {
+        margin-bottom: 2rem;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .header-content {
+        position: relative;
+      }
+      
+      .nav-toggle {
+        display: block;
+      }
+      
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: var(--dark);
+        padding: 1rem 0;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s;
+      }
+      
+      .nav-links.show {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .nav-links li {
+        margin: 0;
+      }
+      
+      .nav-links a {
+        display: block;
+        padding: 0.75rem 1.5rem;
+      }
+      
+      .nav-links a::after {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .section {
+        padding: 4rem 0;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.75rem;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .about-info {
+        grid-template-columns: 1fr;
+      }
+      
+      .section {
+        padding: 3rem 0;
+      }
+      
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">ATK<span>R</span></div>
+        <button class="nav-toggle">☰</button>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Aerula Trinath Krishna Reddy</h1>
+        <p>Web Developer | App Developer | Freelancer</p>
+        <a href="#contact" class="hero-btn">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>About Me</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-img">
+          <img src="C:\Users\krish\OneDrive\Pictures/My.png" alt="Aerula Trinath Krishna Reddy">
+        </div>
+        <div class="about-text">
+          <h3>Web Developer & App Developer</h3>
+          <p>Hello! I'm Aerula Trinath Krishna Reddy, a passionate web and app developer with a keen interest in creating beautiful, functional, and user-friendly digital experiences. Currently pursuing my graduation at Aurora University, I also work as a freelancer on various web and app development projects.</p>
+          <div class="about-info">
+            <div class="info-item">
+              <strong>Birthday:</strong> March 9, 2007
+            </div>
+            <div class="info-item">
+              <strong>Phone:</strong> 9391820871
+            </div>
+            <div class="info-item">
+              <strong>Email:</strong> krishnareddyaerulatrinath@gmail.com
+            </div>
+            <div class="info-item">
+              <strong>Location:</strong> Sri puri Colony, Peerzadiguda, Uppal
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section" style="background-color: var(--gray-light);">
+    <div class="container">
+      <div class="section-title">
+        <h2>My Skills</h2>
+      </div>
+      <div class="skills-container">
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <h3>Web Development</h3>
+          </div>
+          <div class="skill-card-body">
+            <div class="skill-progress">
+              <div class="skill-progress-bar" style="width: 85%;"></div>
+            </div>
+            <p>Proficient in creating responsive and user-friendly websites using modern technologies.</p>
+          </div>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <h3>App Development</h3>
+          </div>
+          <div class="skill-card-body">
+            <div class="skill-progress">
+              <div class="skill-progress-bar" style="width: 80%;"></div>
+            </div>
+            <p>Experienced in developing mobile applications that deliver exceptional user experiences.</p>
+          </div>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <h3>C Programming</h3>
+          </div>
+          <div class="skill-card-body">
+            <div class="skill-progress">
+              <div class="skill-progress-bar" style="width: 75%;"></div>
+            </div>
+            <p>Strong foundation in C programming fundamentals and problem-solving.</p>
+          </div>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <h3>Website Designing</h3>
+          </div>
+          <div class="skill-card-body">
+            <div class="skill-progress">
+              <div class="skill-progress-bar" style="width: 90%;"></div>
+            </div>
+            <p>Creative expertise in designing visually appealing and functional websites.</p>
+          </div>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <h3>Marketing</h3>
+          </div>
+          <div class="skill-card-body">
+            <div class="skill-progress">
+              <div class="skill-progress-bar" style="width: 70%;"></div>
+            </div>
+            <p>Knowledge of digital marketing strategies to promote products and services effectively.</p>
+          </div>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <h3>Photoshop</h3>
+          </div>
+          <div class="skill-card-body">
+            <div class="skill-progress">
+              <div class="skill-progress-bar" style="width: 75%;"></div>
+            </div>
+            <p>Skilled in image editing and graphic design using Adobe Photoshop.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>My Portfolio</h2>
+      </div>
+           <div class="portfolio-grid">
+        <div class="portfolio-item">
+          <div class="portfolio-img">
+            <h3 style="color: #9e9e9e;">Working On it</h3>
+          </div>
+          <div class="portfolio-content">
+            <h4 class="portfolio-title">Project 1</h4>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Web Development</span>
+              <span class="portfolio-tag">Front-End, UI/UX</span>
+            </div>
+            <p>This space will showcase my upcoming web development project. Stay tuned!</p>
+          </div>
+        </div>
+      </section>
+
+  <!-- Resume Section -->
+  <section id="resume" class="section" style="background-color: var(--gray-light);">
+    <div class="container">
+      <div class="section-title">
+        <h2>Resume</h2>
+      </div>
+      <div class="resume-tabs">
+        <div class="resume-tab active" data-target="education">Education</div>
+        <div class="resume-tab" data-target="experience">Experience</div>
+      </div>
+      <div class="resume-content">
+        <div class="resume-items active" id="education">
+          <div class="resume-item">
+            <span class="resume-date">2022 - Present</span>
+            <h4 class="resume-title">Graduation</h4>
+            <p class="resume-place">Aurora University, Paravathapur</p>
+            <p>Currently pursuing my undergraduate degree with a focus on computer science and technology.</p>
+          </div>
+          
+          <div class="resume-item">
+            <span class="resume-date">2020 - 2022</span>
+            <h4 class="resume-title">Intermediate</h4>
+            <p class="resume-place">Narayana Jr College, Habsiguda</p>
+            <p>Completed intermediate education with excellent academic performance, building a strong foundation in science and mathematics.</p>
+          </div>
+          
+          <div class="resume-item">
+            <span class="resume-date">2019 - 2020</span>
+            <h4 class="resume-title">Schooling</h4>
+            <p class="resume-place">Vijaya Ratna High School, Boduppal</p>
+            <p>Completed schooling with distinction, participating in various extracurricular activities and developing foundational skills.</p>
+          </div>
+        </div>
+        
+        <div class="resume-items" id="experience">
+          <div class="resume-item">
+            <span class="resume-date">2022 - Present</span>
+            <h4 class="resume-title">Freelance Web Developer</h4>
+            <p class="resume-place">Self-employed</p>
+            <p>Working with clients to design and develop user-friendly websites and web applications that meet their business needs and objectives.</p>
+          </div>
+          
+          <div class="resume-item">
+            <span class="resume-date">2023 - Present</span>
+            <h4 class="resume-title">App Development</h4>
+            <p class="resume-place">Personal Projects</p>
+            <p>Developing mobile applications to enhance my skills and create practical solutions to everyday problems.</p>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="Downloads/A_Trinath_Krishna_Resume.pdf" class="btn" download>Download Full Resume</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact Me</h2>
+      </div>
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📱</div>
+            <div>
+              <h4>Phone</h4>
+              <p>9391820871</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <h4>Email</h4>
+              <p>krishnareddyaerulatrinath@gmail.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <h4>Location</h4>
+              <p>Sri puri Colony Rd No.2, Peerzadiguda, Uppal</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">🌐</div>
+            <div>
+              <h4>LinkedIn</h4>
+              <p><a href="https://www.linkedin.
